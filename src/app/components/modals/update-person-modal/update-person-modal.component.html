@@ -1,0 +1,88 @@
+<modal-popup id="update-person-modal">
+    <form [formGroup]="personForm">
+        <div class="input-container">
+            <label igxLabel for="first_name">First Name</label>
+            <input formControlName="first_name" type="text" name="first_name" />
+            <div
+                class="alert"
+                *ngIf="
+                    personForm.get('first_name')?.hasError('required') &&
+                    personForm.get('first_name')?.touched
+                "
+            >
+                First name is required
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label igxLabel for="last_name">Last Name</label>
+            <input formControlName="last_name" type="text" name="last_name" />
+            <div
+                class="alert"
+                *ngIf="
+                    personForm.get('last_name')?.hasError('required') &&
+                    personForm.get('last_name')?.touched
+                "
+            >
+                Last name is required
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label igxLabel for="email">Email</label>
+            <input formControlName="email" type="text" name="email" />
+            <div
+                class="alert"
+                *ngIf="
+                    personForm.get('email')?.hasError('required') &&
+                    personForm.get('email')?.touched
+                "
+            >
+                Email is required
+            </div>
+        </div>
+        <div class="input-container">
+            <label igxLabel for="gender">Gender</label>
+            <input formControlName="gender" type="text" name="gender" />
+            <div
+                class="alert"
+                *ngIf="
+                    personForm.get('gender')?.hasError('required') &&
+                    personForm.get('gender')?.touched
+                "
+            >
+                Gender is required
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label igxLabel for="ip_address">IP Address</label>
+            <input formControlName="ip_address" type="text" name="ip_address" />
+            <div
+                class="alert"
+                *ngIf="
+                    personForm.get('ip_address')?.hasError('required') &&
+                    personForm.get('ip_address')?.touched
+                "
+            >
+                Ip address is required
+            </div>
+        </div>
+        <div class="button-container">
+            <button
+                [hidden]="!personService.edit"
+                (click)="personService.addPerson()"
+                type="submit"
+            >
+                Add Person
+            </button>
+            <button
+                [hidden]="personService.edit"
+                (click)="personService.updatePerson()"
+                type="submit"
+            >
+                Update Person
+            </button>
+        </div>
+    </form>
+</modal-popup>

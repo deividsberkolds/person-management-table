@@ -1,0 +1,24 @@
+.alert {
+    color: red;
+}
+form {
+    display: flex;
+    flex-direction: column;
+
+    .input-container {
+        display: flex;
+        margin-bottom: 10px;
+        label {
+            width: 100px;
+        }
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .input-container {
+        flex-direction: column;
+        input {
+            width: 90%;
+        }
+    }
+}

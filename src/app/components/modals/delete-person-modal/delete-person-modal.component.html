@@ -1,0 +1,10 @@
+<modal-popup id="delete-person-modal">
+    Do you really want to delete this person number
+    {{ personService.person.id }} ?
+    <button (click)="this.modalService.close('delete-person-modal')">
+        CANCEL
+    </button>
+    <button (click)="this.personService.removePerson(personService.person.id)">
+        Delete
+    </button>
+</modal-popup>
