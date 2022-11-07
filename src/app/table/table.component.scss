@@ -1,129 +1,172 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .button-container {
-    width: 70%;
-    text-align: right;
-    margin: 0 auto;
+  width: 70%;
+  text-align: left;
+  margin: 10px auto 10px;
+
+  button {
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+  }
 }
 
 table {
-    width: 70%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    color: white;
-    border: rgba(255, 255, 255, 0.1);
+  width: 70%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  color: white;
+  border: rgba(255, 255, 255, 0.1);
 
-    th {
-        color: white;
-        font-weight: bold;
-    }
-    td,
-    th {
-        border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-        text-align: left;
-        width: 50px;
-        white-space: nowrap;
-    }
+  th {
+    color: white;
+    font-weight: bold;
+  }
+  td,
+  th {
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    text-align: left;
+    width: 50px;
+    white-space: nowrap;
+  }
 }
 
-button {
+.action-btn {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+}
+
+@media only screen and (max-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  table {
+    width: 90%;
+    th {
+      padding: 0;
+      overflow: auto;
+    }
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Id";
+  }
+  td:nth-of-type(2):before {
+    content: "First Name";
+  }
+  td:nth-of-type(3):before {
+    content: "Last Name";
+  }
+  td:nth-of-type(4):before {
+    content: "Email";
+  }
+  td:nth-of-type(5):before {
+    content: "Gender";
+  }
+  td:nth-of-type(6):before {
+    content: "Ip Address";
+  }
+  td:nth-of-type(7):before {
+    content: "Update";
+  }
+  td:nth-of-type(8):before {
+    content: "Delete";
+  }
+}
+
+.pagination-container {
+  width: 20%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+
+  button {
     background-color: transparent;
     background-repeat: no-repeat;
-    border: none;
     cursor: pointer;
     overflow: hidden;
     outline: none;
     color: white;
+    border: none;
+  }
+
+  button:disabled {
+    border: 1px solid white;
+    border-radius: 100%;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
-    table,
-    thead,
-    tbody,
-    th,
-    td,
+  table {
     tr {
-        display: block;
+      margin-bottom: 20px;
     }
-
-    table {
-        width: 90%;
-        th {
-            padding: 0;
-            overflow: auto;
-        }
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr {
-        border: 1px solid #ccc;
-    }
-
-    td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-    }
-
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-    }
-
-    td:nth-of-type(1):before {
-        content: "Id";
-    }
-    td:nth-of-type(2):before {
-        content: "First Name";
-    }
-    td:nth-of-type(3):before {
-        content: "Last Name";
-    }
-    td:nth-of-type(4):before {
-        content: "Email";
-    }
-    td:nth-of-type(5):before {
-        content: "Gender";
-    }
-    td:nth-of-type(6):before {
-        content: "Ip Address";
-    }
-    td:nth-of-type(7):before {
-        content: "Update";
-    }
-    td:nth-of-type(8):before {
-        content: "Delete";
-    }
+  }
+  .button-container {
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 580px) {
-    table {
-        font-size: 11px;
-        width: 100%;
-    }
-}
+  table {
+    font-size: 11px;
+    width: 90%;
 
-.pagination-container {
-    width: 20%;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
-
-    button:disabled {
-        border: 1px solid white;
-        border-radius: 100%;
+    button {
+      padding: 4px;
+      font-size: 11px;
     }
+  }
+  .button-container {
+    button {
+      padding: 4px;
+      font-size: 11px;
+    }
+  }
+  .pagination-container {
+    width: 70%;
+  }
 }

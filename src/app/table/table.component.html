@@ -1,48 +1,56 @@
 <div class="container">
-    <div class="button-container">
-        <button (click)="personService.openAddModal()">Add person</button>
-    </div>
-    <table id="persons">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Ip Address</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
+  <div class="button-container">
+    <button class="action-btn" (click)="personService.openAddModal()">
+      Add person
+    </button>
+  </div>
+  <table id="persons">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Ip Address</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
 
-        <tr *ngFor="let person of personService.pagination.records">
-            <td>{{ person.id }}</td>
-            <td>{{ person.first_name }}</td>
-            <td>{{ person.last_name }}</td>
-            <td>{{ person.email }}</td>
-            <td>{{ person.gender }}</td>
-            <td>{{ person.ip_address }}</td>
-            <td>
-                <button (click)="personService.setEditPerson(person)">
-                    Update
-                </button>
-            </td>
-            <td>
-                <button (click)="personService.setRemovePerson(person.id)">
-                    Delete
-                </button>
-            </td>
-        </tr>
-    </table>
-    <div class="pagination-container">
-        <div *ngFor="let pageNum of personService.pagination.pageCount">
-            <button
-                (click)="personService.handlePagination(pageNum)"
-                [disabled]="pageNum === personService.pagination.currentPage"
-            >
-                {{ pageNum }}
-            </button>
-        </div>
+    <tr *ngFor="let person of personService.pagination.records">
+      <td>{{ person.id }}</td>
+      <td>{{ person.first_name }}</td>
+      <td>{{ person.last_name }}</td>
+      <td>{{ person.email }}</td>
+      <td>{{ person.gender }}</td>
+      <td>{{ person.ip_address }}</td>
+      <td>
+        <button
+          class="action-btn"
+          (click)="personService.setEditPerson(person)"
+        >
+          Update
+        </button>
+      </td>
+      <td>
+        <button
+          class="action-btn"
+          (click)="personService.setRemovePerson(person.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div class="pagination-container">
+    <div *ngFor="let pageNum of personService.pagination.pageCount">
+      <button
+        (click)="personService.handlePagination(pageNum)"
+        [disabled]="pageNum === personService.pagination.currentPage"
+      >
+        {{ pageNum }}
+      </button>
     </div>
+  </div>
 </div>

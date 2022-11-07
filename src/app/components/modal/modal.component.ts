@@ -1,59 +1,59 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalService } from 'src/app/services/modal.service';
-import { PersonService } from 'src/app/services/person.service';
+import { Component, ElementRef, Input, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
+import { ModalService } from "src/app/services/modal.service";
+import { PersonService } from "src/app/services/person.service";
 
 @Component({
-    selector: 'modal-popup',
-    templateUrl: './modal.component.html',
+  selector: "modal-popup",
+  templateUrl: "./modal.component.html",
 })
 export class ModalComponent implements OnInit, OnDestroy {
-    @Input() id!: string;
-    private element: any;
+  @Input() id!: string;
+  private element: any;
 
-    constructor(
-        private modalService: ModalService,
-        protected el: ElementRef,
-        protected personService: PersonService,
-        private router: Router
-    ) {
-        this.element = el.nativeElement;
+  constructor(
+    private modalService: ModalService,
+    protected el: ElementRef,
+    protected personService: PersonService,
+    private router: Router
+  ) {
+    this.element = el.nativeElement;
+  }
+
+  ngOnInit(): void {
+    let modal = this;
+
+    if (!this.id) {
+      return;
     }
 
-    ngOnInit(): void {
-        let modal = this;
+    this.element.addEventListener("click", function (e: any) {
+      if (
+        e.target.className === "modal-popup" ||
+        e.target.className === "close-btn"
+      ) {
+        modal.close();
+      }
+    });
 
-        if (!this.id) {
-            return;
-        }
+    this.modalService.add(this);
+  }
 
-        this.element.addEventListener('click', function (e: any) {
-            if (
-                e.target.className === 'modal-popup' ||
-                e.target.className === 'close-btn'
-            ) {
-                modal.close();
-            }
-        });
+  ngOnDestroy(): void {
+    this.modalService.remove(this.id);
+    this.element.remove();
+  }
 
-        this.modalService.add(this);
-    }
+  open(): void {
+    this.element.classList.add("open");
+    document.body.classList.add("modal-popup-open");
+  }
 
-    ngOnDestroy(): void {
-        this.modalService.remove(this.id);
-        this.element.remove();
-    }
+  close(): void {
+    this.router.navigate(["/"]);
 
-    open(): void {
-        this.element.style.display = 'block';
-        document.body.classList.add('modal-popup-open');
-    }
-
-    close(): void {
-        this.router.navigate(['/']);
-
-        this.element.style.display = 'none';
-        document.body.classList.remove('modal-popup-open');
-        this.personService.resetValues();
-    }
+    this.element.classList.remove("open");
+    document.body.classList.remove("modal-popup-open");
+    this.personService.resetValues();
+  }
 }

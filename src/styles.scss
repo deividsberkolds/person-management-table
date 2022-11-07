@@ -1,67 +1,79 @@
 html,
 body {
-    height: 100%;
-}
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-body {
-    margin: 0;
-
-    color: black;
-    font-weight: normal;
-    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-    background: linear-gradient(to right, #25c481, #25b7c4);
-    font-family: "Roboto", sans-serif;
+  margin: 0;
+  color: black;
+  font-weight: normal;
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: "Roboto", sans-serif;
 }
 
 modal-popup {
-    display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 
-    .modal-popup {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        margin: auto;
-        min-height: 300px;
-        z-index: 1000;
+  .modal-popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+    min-height: 300px;
+    z-index: 1000;
+    opacity: 0;
 
-        .modal-popup-body {
-            width: 50%;
-            margin: 40px auto 0;
-            padding: 20px;
-            background: #fff;
+    .modal-popup-body {
+      width: 50%;
+      margin: 40px auto 0;
+      padding: 20px;
+      background: #fff;
 
-            .close-btn {
-                color: gray;
-                text-align: right;
-                cursor: pointer;
-                float: right;
+      .close-btn {
+        color: gray;
+        text-align: right;
+        cursor: pointer;
+        float: right;
 
-                @media only screen and (max-width: 580px) {
-                    float: unset;
-                }
-            }
+        @media only screen and (max-width: 580px) {
+          float: unset;
         }
+      }
     }
+  }
 
-    .modal-popup-background {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+  .modal-popup-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-        background-color: #000;
-        opacity: 0.75;
-        z-index: 900;
-    }
+    background-color: #000;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+modal-popup.open {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+
+  .modal-popup {
+    opacity: 1;
+  }
+
+  .modal-popup-background {
+    visibility: visible;
+    z-index: 900;
+    opacity: 0.75;
+  }
 }
 
 body.modal-popup-open {
-    overflow: hidden;
+  overflow: hidden;
 }
